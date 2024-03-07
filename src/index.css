@@ -1,14 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,400;10..48,700&family=Raleway:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,400;10..48,700&family=Raleway:wght@400;700&display=swap");
 
 * {
   box-sizing: border-box;
 }
 
 html {
-  font-family: 'Bricolage Grotesque', sans-serif;
+  font-family: "Bricolage Grotesque", sans-serif;
   line-height: 1.5;
 
-  color: #defaf8;
+  color: #343a40;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -22,63 +22,62 @@ html {
 body {
   margin: 0;
   padding: 2rem;
-  background: linear-gradient(180deg, #1f1c2c 0%, #1f1c2c 100%);
+  background: linear-gradient(180deg, #e9ecef 0%, #ced4da 100%);
 }
 
 header {
   text-align: center;
+  /* filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.4)); */
 }
 
 header img {
-  width: 5rem;
-  height: 5rem;
+  width: 2rem;
+  height: 2rem;
   object-fit: contain;
   filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.4));
 }
 
 header h1 {
   margin: 0;
-  font-size: 3rem;
+  font-size: 1.5rem;
   text-transform: uppercase;
-  letter-spacing: 1rem;
+  letter-spacing: 0.75rem;
 }
 
 header p {
-  margin: 0 auto;
-  font-size: 1.15rem;
-  max-width: 38ch;
-  color: #9eb5b4;
+  margin: 0;
+  font-size: 0.75rem;
 }
 
 .places-category {
   max-width: 85rem;
   margin: 2rem auto;
-  padding: 1rem;
-  border: 2px solid #0d373e;
-  border-radius: 8px;
+  pad: 1rem;
+  border: 2px solid #457b9d;
+  border-radius: 4px;
 }
 
 .places-category h2 {
-  font-family: 'Raleway', sans-serif;
-  font-size: 1.5rem;
+  font-family: "Raleway", sans-serif;
+  font-size: 1rem;
   margin: 0;
   padding: 0;
   margin-bottom: 1rem;
-  color: #8feeff;
-  text-align: center;
 }
 
 .fallback-text {
+  font-size: 0.75rem;
   text-align: center;
 }
 
 .places {
   max-width: 80rem;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
-  grid-gap: 2rem;
-  margin: 2rem auto;
-  padding: 0;
+  grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+  gap: 1rem;
+
+  margin: 0.5rem auto;
+  padding: 0.25rem;
   list-style: none;
 }
 
@@ -86,10 +85,10 @@ header p {
   position: relative;
   display: flex;
   flex-direction: column;
-  border-radius: 8px;
-  background: #1f1c2c;
+  border-radius: 4px;
+  background: #a5d8ff;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-  animation: slide-up-fade-in 0.3s ease-out forwards;
+  animation: slide-down-fade-in 0.5s ease-out forwards;
 }
 
 .place-item button {
@@ -101,15 +100,12 @@ header p {
 
 .place-item:nth-child(odd) button:hover,
 .place-item:nth-child(odd) button:focus {
-  box-shadow: 0 0 8px 4px rgba(255, 217, 0, 0.6);
-  border-radius: 8px;
+  box-shadow: 0 0 4px 2px rgba(255, 217, 0, 0.6);
   transform: rotate(5deg);
 }
-
 .place-item:nth-child(even) button:hover,
 .place-item:nth-child(even) button:focus {
-  box-shadow: 0 0 8px 4px rgba(255, 217, 0, 0.6);
-  border-radius: 8px;
+  box-shadow: 0 0 4px 2px rgba(255, 217, 0, 0.6);
   transform: rotate(-5deg);
 }
 
@@ -121,89 +117,18 @@ header p {
 }
 
 .place-item h3 {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-weight: normal;
-  font-size: 0.9rem;
+  font-size: 0.75rem;
+  color: #1864ab;
   position: absolute;
   bottom: 0;
   right: 1rem;
   margin: 1rem auto;
-  background-color: #feee86;
-  border-radius: 4px;
-  padding: 0.15rem 0.35rem;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
-}
-
-#delete-confirmation {
-  padding: 1rem;
-}
-
-#delete-confirmation h2 {
-  font-family: 'Raleway', sans-serif;
-  font-size: 1.5rem;
-  margin: 0;
-  padding: 0;
-  color: #5d0909;
-}
-
-#delete-confirmation p {
-  margin: 0 auto;
-  font-size: 1.15rem;
-  max-width: 38ch;
-  color: #804242;
-}
-
-#confirmation-actions {
-  margin-top: 1rem;
-  display: flex;
-  justify-content: flex-end;
-  gap: 1rem;
-}
-
-.button {
-  cursor: pointer;
-  font-family: 'Raleway', sans-serif;
-  font-size: 1rem;
-  padding: 0.5rem 1.5rem;
-  border: none;
-  border-radius: 4px;
-  background-color: #5d0909;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
-  color: #fff;
-}
-
-.button:hover,
-.button:focus {
-  background-color: #3e0505;
-}
-
-.button-text {
-  background: transparent;
-  border: none;
-  padding: 0;
-  font-family: 'Raleway', sans-serif;
-  font-size: 1rem;
-  color: #5d0909;
-}
-
-.modal::backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  width: 100%;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.6);
-}
-
-.modal {
-  min-width: 30rem;;
-  padding: 0;
-  z-index: 2;
-  background: #d5c7bc;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  animation: slide-down-fade-in 0.3s ease-out forwards;
+  background-color: rgba(255, 217, 0, 0.75);
+  border-radius: 2px;
+  padding: 0.05rem 0.15rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
 @keyframes slide-down-fade-in {

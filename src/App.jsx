@@ -1,53 +1,37 @@
-import { useRef, useState } from 'react';
+import { useState, useRef } from "react";
 
-import Places from './components/Places.jsx';
-import { AVAILABLE_PLACES } from './data.js';
-import Modal from './components/Modal.jsx';
-import DeleteConfirmation from './components/DeleteConfirmation.jsx';
-import logoImg from './assets/logo.png';
+import Places from "./components/Places";
+import { AVAILABLE_PLACES } from "./data";
+import Modal from "./components/Modal";
+import logoImg from "./assets/logo.png";
 
 function App() {
   const modal = useRef();
-  const selectedPlace = useRef();
   const [pickedPlaces, setPickedPlaces] = useState([]);
 
-  function handleStartRemovePlace(id) {
-    modal.current.open();
-    selectedPlace.current = id;
-  }
-
-  function handleStopRemovePlace() {
-    modal.current.close();
+  function handleStartRemovePlace() {
+    console.log("remove");
   }
 
   function handleSelectPlace(id) {
+    console.log(id);
     setPickedPlaces((prevPickedPlaces) => {
       if (prevPickedPlaces.some((place) => place.id === id)) {
         return prevPickedPlaces;
       }
-      const place = AVAILABLE_PLACES.find((place) => place.id === id);
-      return [place, ...prevPickedPlaces];
+      const pickedPlace = AVAILABLE_PLACES.find((place) => place.id === id);
+      return [pickedPlace, ...prevPickedPlaces];
     });
   }
-
-  function handleRemovePlace() {
-    setPickedPlaces((prevPickedPlaces) =>
-      prevPickedPlaces.filter((place) => place.id !== selectedPlace.current)
-    );
-    modal.current.close();
-  }
-
   return (
     <>
-      <Modal ref={modal}>
-        <DeleteConfirmation
-          onCancel={handleStopRemovePlace}
-          onConfirm={handleRemovePlace}
-        />
+      <Modal>
+        <div>
+          <div>Test Modal</div>
+        </div>
       </Modal>
-
       <header>
-        <img src={logoImg} alt="Stylized globe" />
+        <img src={logoImg} alt="" />
         <h1>PlacePicker</h1>
         <p>
           Create your personal collection of places you would like to visit or
@@ -55,16 +39,16 @@ function App() {
         </p>
       </header>
       <main>
+        <button>Test</button>
         <Places
           title="I'd like to visit ..."
-          fallbackText={'Select the places you would like to visit below.'}
           places={pickedPlaces}
-          onSelectPlace={handleStartRemovePlace}
+          onSeclectPlace={handleStartRemovePlace}
         />
         <Places
           title="Available Places"
           places={AVAILABLE_PLACES}
-          onSelectPlace={handleSelectPlace}
+          onSeclectPlace={handleSelectPlace}
         />
       </main>
     </>
