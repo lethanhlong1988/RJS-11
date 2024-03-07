@@ -1,11 +1,10 @@
-import { useRef } from "react";
+import { useRef, forwardRef } from "react";
 
-function Modal({ children }) {
+const Modal = forwardRef(function RefModal({ children }, ref) {
   const dialogRef = useRef();
-  const testRef = useRef();
+  console.log(dialogRef.current);
 
   function open() {
-    console.log(testRef.current.innerHTML);
     dialogRef.current.showModal();
   }
   function close() {
@@ -13,14 +12,12 @@ function Modal({ children }) {
   }
   return (
     <>
-      <button onClick={open}>Open</button>
       <dialog ref={dialogRef}>
         {children}
         <button onClick={close}>Close</button>
       </dialog>
-      <div ref={testRef}>Test</div>
     </>
   );
-}
+});
 
 export default Modal;

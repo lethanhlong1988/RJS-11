@@ -3,14 +3,17 @@ import { useState, useRef } from "react";
 import Places from "./components/Places";
 import { AVAILABLE_PLACES } from "./data";
 import Modal from "./components/Modal";
+// import ChildComponent from "./components/ChildComponent";
 import logoImg from "./assets/logo.png";
 
 function App() {
+  const inputRef = useRef();
   const modal = useRef();
   const [pickedPlaces, setPickedPlaces] = useState([]);
 
   function handleStartRemovePlace() {
-    console.log("remove");
+    console.log("open Modal");
+    console.log(modal.current);
   }
 
   function handleSelectPlace(id) {
@@ -25,7 +28,7 @@ function App() {
   }
   return (
     <>
-      <Modal>
+      <Modal ref={modal}>
         <div>
           <div>Test Modal</div>
         </div>
