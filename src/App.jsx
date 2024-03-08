@@ -4,16 +4,30 @@ import Places from "./components/Places";
 import { AVAILABLE_PLACES } from "./data";
 import Modal from "./components/Modal";
 // import ChildComponent from "./components/ChildComponent";
+import DeleteConfirmation from "./components/DeleteConfirmation";
 import logoImg from "./assets/logo.png";
 
 function App() {
-  const inputRef = useRef();
   const modal = useRef();
+  const selectedPlace = useRef();
   const [pickedPlaces, setPickedPlaces] = useState([]);
 
-  function handleStartRemovePlace() {
-    console.log("open Modal");
-    console.log(modal.current);
+  function handleStartRemovePlace(id) {
+    modal.current.open();
+    selectedPlace.current = id;
+  }
+
+  function handleStopRemovePlace() {
+    modal.current.close();
+  }
+
+  function handleRemovePlace() {
+    setPickedPlaces((prevPickedPlaces) => {
+      return prevPickedPlaces.filter(
+        (place) => place.id !== selectedPlace.current,
+      );
+    });
+    modal.current.close();
   }
 
   function handleSelectPlace(id) {
@@ -30,7 +44,11 @@ function App() {
     <>
       <Modal ref={modal}>
         <div>
-          <div>Test Modal</div>
+          <button onClick={handleStopRemovePlace}>Close</button>
+          <DeleteConfirmation
+            onCancel={handleStopRemovePlace}
+            onRemove={handleRemovePlace}
+          />
         </div>
       </Modal>
       <header>
